@@ -1,0 +1,11 @@
+# Yi SPA 美體美學 - 靜態網站項目
+# 此項目為純 HTML/CSS/JavaScript 網站，無需 Python 依賴
+
+# 如需本地開發伺服器，可選安裝以下套件：
+
+# HTTP 伺服器（可選）
+# 使用方式: python -m http.server 8000
+# 無需安裝任何套件，Python 內建
+
+# 或使用更進階的伺服器
+flask>=3.0.0  # 可選：用於搭建開發伺服器
