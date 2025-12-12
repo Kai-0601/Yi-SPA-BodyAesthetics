@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伊 Spa 美體美學 | 高雄專業芳療與美膚管理</title>
+    <meta name="description" content="伊 Spa 美體美學提供專業背部經絡調理、全背香氛精油SPA、臉部撥筋、液態皮秒、孕婦SPA等服務。位於高雄前金區，全面預約制，給您最放鬆的私人空間。">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS (CDN for prototyping) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#FDFBF7',  // 極淺奶茶
+                            100: '#F7F1E8', // 淺奶茶背景
+                            200: '#EBDCC1', // 裸膚色
+                            300: '#DCC09B', // 奶茶色
+                            400: '#C5A065', // 香檳金 (點綴)
+                            500: '#A6834C', // 深金
+                            600: '#8C6B3D',
+                            800: '#5C4830', // 深褐 (文字)
+                            900: '#3E3021',
+                        },
+                        accent: {
+                            pink: '#EBCBCB', // 莫蘭迪粉
+                            green: '#C1D3C4', // 鼠尾草綠 (清新感)
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Noto Serif TC"', '"Cormorant Garamond"', 'serif'],
+                        display: ['"Cormorant Garamond"', 'serif'],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
+                        'texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F7F1E8;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #DCC09B;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C5A065;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 160, 101, 0.1);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: #C5A065;
+        }
+
+        /* Smooth Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-brand-800 bg-brand-50 selection:bg-brand-200 selection:text-brand-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-display text-2xl md:text-3xl text-brand-600 tracking-widest font-semibold">
+                        伊 Spa <span class="text-brand-400 text-lg md:text-xl">美體美學</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about"
+                        class="text-brand-800 hover:text-brand-500 transition-colors tracking-wide text-sm font-medium">關於我們</a>
+                    <a href="#body-spa"
+                        class="text-brand-800 hover:text-brand-500 transition-colors tracking-wide text-sm font-medium">身體芳療</a>
+                    <a href="#sculpting"
+                        class="text-brand-800 hover:text-brand-500 transition-colors tracking-wide text-sm font-medium">美體雕塑</a>
+                    <a href="#facial"
+                        class="text-brand-800 hover:text-brand-500 transition-colors tracking-wide text-sm font-medium">臉部保養</a>
+                    <a href="#contact"
+                        class="px-6 py-2 bg-brand-400 text-white rounded-full hover:bg-brand-500 transition-all duration-300 shadow-lg shadow-brand-200 text-sm tracking-wider">
+                        立即預約
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-800 hover:text-brand-500 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-50 absolute w-full shadow-lg border-t border-brand-200">
+            <div class="px-4 pt-2 pb-6 space-y-2 text-center">
+                <a href="#about" class="block px-3 py-3 text-brand-800 hover:bg-brand-100 rounded-md">關於我們</a>
+                <a href="#body-spa" class="block px-3 py-3 text-brand-800 hover:bg-brand-100 rounded-md">身體芳療</a>
+                <a href="#sculpting" class="block px-3 py-3 text-brand-800 hover:bg-brand-100 rounded-md">美體雕塑</a>
+                <a href="#facial" class="block px-3 py-3 text-brand-800 hover:bg-brand-100 rounded-md">臉部保養</a>
+                <a href="#contact" class="block px-3 py-3 text-brand-500 font-medium">立即預約</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                alt="Spa Atmosphere" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-brand-900/20 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-50"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1500">
+            <p class="text-brand-100 tracking-[0.3em] uppercase mb-4 text-sm md:text-base font-medium drop-shadow-md">
+                Professional Beauty & Body Spa</p>
+            <h1 class="font-serif text-5xl md:text-7xl text-white mb-6 leading-tight drop-shadow-lg">
+                喚醒肌膚的自然光采<br>
+                <span class="text-3xl md:text-5xl italic font-light block mt-4 text-brand-50">遇見更美的自己</span>
+            </h1>
+            <p class="text-brand-50/90 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto drop-shadow">
+                在繁忙的都市中，為您保留一處靜謐的綠洲。結合頂級芳療與科技美容，量身打造您的專屬療癒時光。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#services"
+                    class="px-8 py-3 bg-brand-50/90 text-brand-800 hover:bg-white transition-all duration-300 rounded-sm tracking-widest text-sm uppercase border border-white">
+                    瀏覽療程
+                </a>
+                <a href="#contact"
+                    class="px-8 py-3 bg-brand-400 text-white hover:bg-brand-500 transition-all duration-300 rounded-sm tracking-widest text-sm uppercase shadow-lg">
+                    線上預約
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-brand-50 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div
+            class="absolute top-0 right-0 w-64 h-64 bg-accent-pink/20 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/2">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-96 h-96 bg-brand-200/30 rounded-full filter blur-3xl translate-y-1/3 -translate-x-1/3">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Spa Environment"
+                            class="rounded-tl-[100px] rounded-br-[100px] shadow-2xl w-full object-cover h-[500px]">
+                        <div
+                            class="absolute -bottom-8 -right-8 w-48 h-48 bg-white p-4 rounded-full shadow-xl hidden md:flex items-center justify-center animate-pulse">
+                            <div class="text-center">
+                                <span class="block text-3xl font-serif text-brand-400">100%</span>
+                                <span class="text-xs text-brand-600 tracking-wider">採預約制</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="fade-left">
+                    <h2 class="font-serif text-4xl text-brand-900 mb-6">關於 伊 Spa</h2>
+                    <div class="w-16 h-1 bg-brand-400 mb-8"></div>
+                    <p class="text-brand-800/80 leading-loose mb-6 font-light">
+                        伊 Spa 美體美學（Yi Spa）致力於提供最純粹的放鬆體驗。在快節奏的生活中，我們希望能成為您暫時卸下重擔、回歸自我的靜謐空間。
+                    </p>
+                    <p class="text-brand-800/80 leading-loose mb-8 font-light">
+                        我們的芳療師皆經過嚴格培訓，以專業手技搭配優質產品。所有身體芳療課程皆使用專業工具與身體霜進行調理，堅持不推銷，讓您只需專注於享受當下的美好。
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-brand-700">
+                            <i data-lucide="flower-2" class="w-5 h-5 text-brand-400 mr-3"></i>
+                            <span>工作室全面採預約制，保有私人隱私</span>
+                        </li>
+                        <li class="flex items-center text-brand-700">
+                            <i data-lucide="sparkles" class="w-5 h-5 text-brand-400 mr-3"></i>
+                            <span>客製化諮詢與專業建議</span>
+                        </li>
+                        <li class="flex items-center text-brand-700">
+                            <i data-lucide="heart-handshake" class="w-5 h-5 text-brand-400 mr-3"></i>
+                            <span>全程專注服務，享受純粹放鬆</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Wrapper -->
+    <div id="services">
+
+        <!-- 1. Body Aromatherapy -->
+        <section id="body-spa" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <span class="text-brand-400 tracking-widest text-sm uppercase font-semibold">Body
+                        Aromatherapy</span>
+                    <h2 class="font-serif text-3xl md:text-4xl text-brand-900 mt-2 section-title">身體芳療與舒壓</h2>
+                    <p class="text-brand-600 mt-4 max-w-2xl mx-auto font-light">
+                        所有芳療皆使用工具搭配身體霜調理，深層釋放壓力。<br>
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Item 1 -->
+                    <div class="group bg-brand-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+                        data-aos="fade-up" data-aos-delay="100">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Back Massage"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div
+                                class="absolute top-4 right-4 bg-white/90 px-3 py-1 text-xs tracking-wider text-brand-800 rounded-full shadow-sm">
+                                經典入門</div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-serif text-xl text-brand-900 mb-2">全背香氛精油 SPA</h3>
+                            <p class="text-sm text-brand-500 mb-4 font-medium">60 mins / NT$ 1,000</p>
+                            <p class="text-brand-700/80 text-sm leading-relaxed mb-6">利用精油香氛深層放鬆背部肌肉，適合長期久坐、肩頸僵硬的您。</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="group bg-brand-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+                        data-aos="fade-up" data-aos-delay="200">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Full Body Massage"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div
+                                class="absolute top-4 right-4 bg-white/90 px-3 py-1 text-xs tracking-wider text-brand-800 rounded-full shadow-sm">
+                                人氣推薦</div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-serif text-xl text-brand-900 mb-2">全身活氧精油 SPA</h3>
+                            <p class="text-sm text-brand-500 mb-4 font-medium">90 mins / NT$ 1,380</p>
+                            <p class="text-brand-700/80 text-sm leading-relaxed mb-6">從頭到腳的極致呵護，促進全身循環代謝，徹底釋放累積的疲勞。</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="group bg-brand-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+                        data-aos="fade-up" data-aos-delay="300">
+                        <div class="h-56 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Herbal Massage"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-serif text-xl text-brand-900 mb-2">艾草溫灸調理</h3>
+                            <p class="text-sm text-brand-500 mb-4 font-medium">90 mins / NT$ 1,580</p>
+                            <p class="text-brand-700/80 text-sm leading-relaxed mb-6">結合東方智慧與艾草溫熱，調理女性宮寒、腰痠，增強身體元氣。</p>
+                        </div>
+                    </div>
+
+                    <!-- More Items List Style -->
+                    <div class="md:col-span-2 lg:col-span-3 mt-4" data-aos="fade-up">
+                        <div class="bg-brand-50 rounded-xl p-8 border border-brand-100">
+                            <h4 class="font-serif text-lg text-brand-800 mb-6 flex items-center">
+                                <i data-lucide="list" class="w-5 h-5 mr-2"></i> 更多芳療課程
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                                <div class="flex justify-between items-center border-b border-brand-200 pb-2">
+                                    <span class="text-brand-800">背部經絡調理 (30min)</span>
+                                    <span class="font-medium text-brand-500">NT$ 600</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-brand-200 pb-2">
+                                    <span class="text-brand-800">孕婦 SPA (60min)</span>
+                                    <span class="font-medium text-brand-500">NT$ 1,200</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-brand-200 pb-2">
+                                    <span class="text-brand-800">頭部醒腦減壓 SPA (20min)</span>
+                                    <span class="font-medium text-brand-500">NT$ 499</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Body Sculpting -->
+        <section id="sculpting" class="py-24 bg-brand-100/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    <div class="lg:col-span-5 order-2 lg:order-1 sticky top-24" data-aos="fade-right">
+                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Body Sculpting" class="rounded-lg shadow-2xl w-full">
+                        <div
+                            class="mt-8 bg-brand-300 rounded-lg p-6 flex flex-col justify-center text-white text-center">
+                            <span class="text-3xl font-serif mb-2">Hot</span>
+                            <span class="text-sm tracking-wider">熱門加購項目</span>
+                            <div class="mt-4 pt-4 border-t border-white/20">
+                                <p class="text-lg">遠紅外線太空艙 (35min)</p>
+                                <p class="text-xl font-bold mt-1">NT$ 400</p>
+                                <p class="text-xs opacity-80 mt-1">(身體系列加購價 $300)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 order-1 lg:order-2 pl-0 lg:pl-12">
+                        <span class="text-brand-400 tracking-widest text-sm uppercase font-semibold">Shape &
+                            Contour</span>
+                        <h2 class="font-serif text-3xl md:text-4xl text-brand-900 mt-2 mb-8">儀器與局部雕塑</h2>
+
+                        <div class="space-y-6">
+                            <!-- Course 1 -->
+                            <div class="flex flex-col md:flex-row gap-6 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                                data-aos="fade-left" data-aos-delay="100">
+                                <div
+                                    class="flex-shrink-0 flex items-center justify-center w-16 h-16 bg-brand-100 rounded-full text-brand-500">
+                                    <i data-lucide="zap" class="w-8 h-8"></i>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between items-baseline mb-2">
+                                        <h3 class="text-lg font-serif font-semibold text-brand-800">G5 局部雕塑</h3>
+                                        <span class="text-brand-500 font-medium">NT$ 499 / 20min</span>
+                                    </div>
+                                    <p class="text-brand-600/80 text-sm">利用高頻震動針對頑固部位進行深層按摩，軟化脂肪，改善橘皮組織。</p>
+                                </div>
+                            </div>
+
+                            <!-- Course 2 -->
+                            <div class="flex flex-col md:flex-row gap-6 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                                data-aos="fade-left" data-aos-delay="200">
+                                <div
+                                    class="flex-shrink-0 flex items-center justify-center w-16 h-16 bg-brand-100 rounded-full text-brand-500">
+                                    <i data-lucide="sparkles" class="w-8 h-8"></i>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between items-baseline mb-2">
+                                        <h3 class="text-lg font-serif font-semibold text-brand-800">嫩白全身去角質</h3>
+                                        <span class="text-brand-500 font-medium">NT$ 1,200 / 60min</span>
+                                    </div>
+                                    <p class="text-brand-600/80 text-sm">溫和去除全身老廢角質，重現肌膚細緻滑嫩觸感。另有嫩白敷體 (40min $888) 可選。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Course 3 -->
+                            <div class="flex flex-col md:flex-row gap-6 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                                data-aos="fade-left" data-aos-delay="300">
+                                <div
+                                    class="flex-shrink-0 flex items-center justify-center w-16 h-16 bg-brand-100 rounded-full text-brand-500">
+                                    <i data-lucide="heart" class="w-8 h-8"></i>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between items-baseline mb-2">
+                                        <h3 class="text-lg font-serif font-semibold text-brand-800">女性專屬護理</h3>
+                                        <span class="text-brand-500 font-medium">Starting from NT$ 1,099</span>
+                                    </div>
+                                    <div class="mt-2 space-y-1">
+                                        <div class="flex justify-between text-sm text-brand-600">
+                                            <span>美胸淋巴護理 (40min)</span>
+                                            <span>NT$ 1,199</span>
+                                        </div>
+                                        <div class="flex justify-between text-sm text-brand-600">
+                                            <span>婦科暖宮調理 (40min)</span>
+                                            <span>NT$ 1,099</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Facial Treatments -->
+        <section id="facial" class="py-24 bg-white relative">
+            <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-brand-100/50 to-white"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <span class="text-brand-400 tracking-widest text-sm uppercase font-semibold">Skincare</span>
+                    <h2 class="font-serif text-3xl md:text-4xl text-brand-900 mt-2 section-title">臉部保養與基礎調理</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Left Column: Featured Image & Top Course -->
+                    <div class="space-y-6" data-aos="fade-right">
+                        <div class="relative h-[300px] rounded-2xl overflow-hidden shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Facial Treatment" class="absolute inset-0 w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-brand-900/80 via-brand-900/30 to-transparent">
+                            </div>
+                            <div
+                                class="absolute bottom-6 left-6 right-6 text-white p-5 backdrop-blur-md bg-brand-900/40 border border-white/30 rounded-xl shadow-2xl">
+                                <h3 class="font-serif text-2xl mb-2 font-semibold drop-shadow-lg">頂級奢華貂蠶金華調理</h3>
+                                <p class="text-white font-bold mb-1 text-lg drop-shadow-md">NT$ 2,800</p>
+                                <p class="font-light text-sm text-white/95 drop-shadow">極致抗老，重現肌膚彈潤光澤。</p>
+                            </div>
+                        </div>
+
+                        <!-- High End Courses -->
+                        <div class="bg-brand-50 p-6 rounded-xl border border-brand-100">
+                            <h4 class="font-serif text-lg text-brand-800 mb-4 border-b border-brand-200 pb-2">進階煥膚課程
+                            </h4>
+                            <ul class="space-y-4">
+                                <li class="flex justify-between items-center">
+                                    <div>
+                                        <span class="text-brand-800 font-medium">液態皮秒更新調理</span>
+                                        <span class="text-xs block text-brand-500">亮白膚色，細緻毛孔</span>
+                                    </div>
+                                    <span class="text-brand-600 font-bold">NT$ 1,399</span>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <div>
+                                        <span class="text-brand-800 font-medium">黃金緊緻拉提調理</span>
+                                        <span class="text-xs block text-brand-500">V臉拉提，改善鬆弛</span>
+                                    </div>
+                                    <span class="text-brand-600 font-bold">NT$ 1,800</span>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <div>
+                                        <span class="text-brand-800 font-medium">A醇奈米無瑕亮肌</span>
+                                        <span class="text-xs block text-brand-500">深層煥膚，無瑕美肌</span>
+                                    </div>
+                                    <span class="text-brand-600 font-bold">NT$ 2,800</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: List -->
+                    <div class="flex flex-col justify-center space-y-4" data-aos="fade-left">
+                        <div class="bg-white p-6 rounded-xl border border-brand-100 shadow-sm">
+                            <h4 class="font-serif text-lg text-brand-800 mb-4 flex items-center">
+                                <i data-lucide="droplet" class="w-5 h-5 mr-2 text-brand-400"></i> 基礎與特殊護理
+                            </h4>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center border-b border-brand-50 pb-2">
+                                    <span class="text-brand-700">水嫩基礎保濕調理</span>
+                                    <span class="text-brand-500 font-medium">NT$ 999</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-brand-50 pb-2">
+                                    <span class="text-brand-700">臉部撥筋調理</span>
+                                    <span class="text-brand-500 font-medium">NT$ 1,200</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-brand-50 pb-2">
+                                    <span class="text-brand-700">冰波嫩白調理</span>
+                                    <span class="text-brand-500 font-medium">NT$ 1,800</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-brand-50 pb-2">
+                                    <span class="text-brand-700">飛梭水光抗氧淨膚</span>
+                                    <span class="text-brand-500 font-medium">NT$ 1,600</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-brand-50 pb-2">
+                                    <span class="text-brand-700">類醫美矽晶煥膚</span>
+                                    <span class="text-brand-500 font-medium">NT$ 2,780</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-brand-50/50 p-6 rounded-xl border border-brand-100">
+                            <h4 class="font-serif text-lg text-brand-800 mb-4 flex items-center">
+                                <i data-lucide="star" class="w-5 h-5 mr-2 text-brand-400"></i> 局部/特殊調理
+                            </h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-brand-700">顱內耳燭淋巴調理</span>
+                                    <span class="text-brand-500 font-medium">NT$ 799</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-brand-700">背部毛囊淨化調理</span>
+                                    <span class="text-brand-500 font-medium">NT$ 1,399</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-brand-700">眼部循環提升調理</span>
+                                    <span class="text-brand-500 font-medium">NT$ 599</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Add-ons -->
+        <section class="py-16 bg-brand-800 text-brand-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <h3 class="font-serif text-2xl mb-2 text-brand-200">單項與加購服務</h3>
+                    <p class="text-brand-300 text-sm">可搭配任一主課程加購，享受更完整的保養體驗。</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-center max-w-4xl mx-auto">
+                    <div class="p-6 border border-brand-600 rounded-lg hover:bg-brand-700 transition-colors">
+                        <p class="font-serif text-xl mb-2">課程加購清粉刺</p>
+                        <p class="text-brand-400 text-lg">+ NT$ 400</p>
+                        <p class="text-brand-400/60 text-xs mt-1">(需搭配臉部課程)</p>
+                    </div>
+                    <div class="p-6 border border-brand-600 rounded-lg hover:bg-brand-700 transition-colors">
+                        <p class="font-serif text-xl mb-2">單純清粉刺調理</p>
+                        <p class="text-brand-400 text-lg">NT$ 699</p>
+                        <p class="text-brand-400/60 text-xs mt-1">(含洗臉、冰導凍膜)</p>
+                    </div>
+                    <!-- Reuse specific body add-on from the list -->
+                    <div class="p-6 border border-brand-600 rounded-lg hover:bg-brand-700 transition-colors">
+                        <p class="font-serif text-xl mb-2">太空艙加購</p>
+                        <p class="text-brand-400 text-lg">+ NT$ 300</p>
+                        <p class="text-brand-400/60 text-xs mt-1">(身體系列加購價)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Booking & Contact Section -->
+    <section id="contact" class="py-24 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Reservation Notes Header & Cards -->
+            <div class="text-center mb-12" data-aos="fade-up">
+                <span class="text-brand-400 tracking-widest text-sm uppercase font-semibold">Reservation Info</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-900 mt-2 section-title">預約與注意事項</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16" data-aos="fade-up" data-aos-delay="100">
+                <!-- Booking Method Card -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-brand-100 relative overflow-hidden hover:shadow-md transition-all duration-300">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-50 rounded-bl-full -mr-8 -mt-8 opacity-50">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-6">
+                            <div class="p-3 bg-brand-50 rounded-full text-brand-500 mr-4">
+                                <i data-lucide="calendar-check" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-2xl text-brand-900">預約方式</h3>
+                        </div>
+                        <div class="space-y-4 text-brand-700/90 leading-relaxed">
+                            <p class="font-medium text-base">
+                                本店採 <span class="text-brand-600 font-bold border-b border-brand-200">全面預約制</span>，請透過
+                                LINE 或 Facebook 粉專預約。
+                            </p>
+                            <div class="bg-brand-50/80 p-4 rounded-lg border border-brand-100 text-base">
+                                <p class="mb-2 font-medium text-brand-800">留言請提供：</p>
+                                <ul class="list-disc list-inside space-y-1 text-brand-600 pl-1">
+                                    <li>姓名</li>
+                                    <li>聯絡電話</li>
+                                    <li>希望預約的日期與時段</li>
+                                </ul>
+                            </div>
+                            <div class="flex items-start text-sm text-brand-500 mt-2">
+                                <i data-lucide="info" class="w-4 h-4 mr-2 flex-shrink-0 mt-0.5"></i>
+                                <p>現場為一人作業，療程中不方便接聽電話，我們會利用空檔盡快回覆您的訊息，感謝您的耐心等候。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Policy Card -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-brand-100 relative overflow-hidden hover:shadow-md transition-all duration-300">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-50 rounded-bl-full -mr-8 -mt-8 opacity-50">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-6">
+                            <div class="p-3 bg-brand-50 rounded-full text-brand-500 mr-4">
+                                <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-2xl text-brand-900">貼心提醒</h3>
+                        </div>
+                        <div class="space-y-4 text-brand-700/90 leading-relaxed">
+                            <p class="text-base">
+                                如需取消或改期，請務必 <span class="text-brand-600 font-bold border-b border-brand-200">提前 3
+                                    天告知</span>。
+                            </p>
+                            <p class="text-base">
+                                請勿臨時取消或遲到，以免影響其他顧客的權益。互相尊重，讓我們共同維護良好的預約品質。
+                            </p>
+                            <div class="mt-6 pt-4 border-t border-brand-100">
+                                <p class="flex items-center text-brand-800 font-medium mb-2 text-lg font-serif">
+                                    <i data-lucide="shield-check" class="w-5 h-5 mr-2 text-brand-400"></i>
+                                    安心承諾
+                                </p>
+                                <p class="text-brand-600 text-base">
+                                    我們堅持 <span class="font-bold">不推銷、不強迫包課程或包卡</span>。走合理優惠的價格路線，讓您享受純粹無壓力的放鬆時光。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Existing Contact Info & Form Block -->
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+
+                    <!-- Info -->
+                    <div class="p-12 bg-brand-900 text-brand-50 flex flex-col justify-center text-center">
+                        <h2 class="font-serif text-3xl mb-8">聯絡資訊</h2>
+
+                        <div class="space-y-6">
+                            <!-- LINE -->
+                            <div class="flex flex-col items-center">
+                                <div class="p-2 bg-brand-800 rounded-lg mb-3">
+                                    <i data-lucide="message-circle" class="w-5 h-5 text-brand-400"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-brand-400 mb-1">LINE ID</p>
+                                    <a href="https://line.me/ti/p/@303ptpzp" target="_blank" rel="noopener noreferrer"
+                                        class="text-lg hover:text-brand-300 transition-all duration-300 underline decoration-brand-400 decoration-2 underline-offset-4 hover:decoration-brand-300">@303ptpzp</a>
+                                    <p class="text-xs text-brand-500 mt-1">※ 記得加 @ (點擊開啟 LINE)</p>
+                                </div>
+                            </div>
+
+                            <!-- Instagram -->
+                            <div class="flex flex-col items-center">
+                                <div class="p-2 bg-brand-800 rounded-lg mb-3">
+                                    <i data-lucide="instagram" class="w-5 h-5 text-brand-400"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-brand-400 mb-1">Instagram</p>
+                                    <a href="https://instagram.com/qizuomi" target="_blank" rel="noopener noreferrer"
+                                        class="text-lg hover:text-brand-300 transition-all duration-300 underline decoration-brand-400 decoration-2 underline-offset-4 hover:decoration-brand-300">@qizuomi</a>
+                                    <p class="text-xs text-brand-500 mt-1">(點擊前往)</p>
+                                </div>
+                            </div>
+
+                            <!-- Facebook -->
+                            <div class="flex flex-col items-center">
+                                <div class="p-2 bg-brand-800 rounded-lg mb-3">
+                                    <i data-lucide="facebook" class="w-5 h-5 text-brand-400"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-brand-400 mb-1">Facebook</p>
+                                    <a href="https://www.facebook.com/share/17zZSa7XSM/?mibextid=wwXIfr" target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="text-lg hover:text-brand-300 transition-all duration-300 underline decoration-brand-400 decoration-2 underline-offset-4 hover:decoration-brand-300">伊spa美體美學</a>
+                                    <p class="text-xs text-brand-500 mt-1">(點擊前往)</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 pt-6 border-t border-brand-800">
+                                <p class="text-brand-400 text-sm font-light leading-relaxed">
+                                    歡迎透過以上方式與我們聯繫預約<br>
+                                    我們會盡快回覆您的訊息
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map or Image -->
+                    <div class="p-12 bg-brand-50 flex flex-col justify-center">
+                        <div class="space-y-6">
+                            <div class="text-center">
+                                <i data-lucide="map-pin" class="w-12 h-12 text-brand-400 mx-auto mb-4"></i>
+                                <h3 class="font-serif text-2xl text-brand-900 mb-4">位於高雄</h3>
+                                <p class="text-brand-700 mb-2 font-medium">高雄市前金區自強二路26-4號2樓</p>
+                                <p class="text-brand-600 text-sm mb-6">(艾朵拉沙龍樓上)</p>
+                            </div>
+
+                            <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                                <h4 class="font-medium text-brand-800 mb-4 flex items-center justify-center">
+                                    <i data-lucide="clock" class="w-5 h-5 mr-2 text-brand-400"></i>
+                                    營業時間
+                                </h4>
+                                <p class="text-brand-700 text-base leading-relaxed">
+                                    工作室全面採預約制<br>
+                                    <span class="text-brand-500 font-medium">(禮拜天公休)</span>
+                                </p>
+                            </div>
+
+                            <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                                <h4 class="font-medium text-brand-800 mb-4 flex items-center justify-center">
+                                    <i data-lucide="car" class="w-5 h-5 mr-2 text-brand-400"></i>
+                                    停車資訊
+                                </h4>
+                                <p class="text-brand-700 text-base leading-relaxed">
+                                    店後面有自費停車場
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 text-brand-300 py-8 border-t border-brand-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="font-serif text-lg text-brand-100 mb-2">伊 Spa 美體美學</p>
+            <p class="text-xs font-light tracking-wider opacity-60">© 2024 Yi Spa. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-sm');
+                navbar.style.paddingTop = '0';
+                navbar.style.paddingBottom = '0';
+            } else {
+                navbar.classList.remove('shadow-sm');
+                // Optional: make it larger at top
+            }
+        });
+    </script>
+</body>
+
+</html>
